@@ -686,6 +686,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveDuration: 0.1
   gridSize: 1
+  blockingLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  HasControl: 1
 --- !u!212 &569174711
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1156,7 +1160,7 @@ GameObject:
   - component: {fileID: 1276537192}
   - component: {fileID: 1276537194}
   - component: {fileID: 1276537193}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1294,7 +1298,7 @@ GameObject:
   - component: {fileID: 1441511520}
   - component: {fileID: 1441511519}
   - component: {fileID: 1441511522}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lazer
   m_TagString: Lazer
   m_Icon: {fileID: 0}
@@ -1714,7 +1718,7 @@ GameObject:
   - component: {fileID: 1753842393}
   - component: {fileID: 1753842395}
   - component: {fileID: 1753842394}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2067,7 +2071,8 @@ GameObject:
   - component: {fileID: 1969039960}
   - component: {fileID: 1969039963}
   - component: {fileID: 1969039964}
-  m_Layer: 0
+  - component: {fileID: 1969039965}
+  m_Layer: 6
   m_Name: Robot
   m_TagString: Robot
   m_Icon: {fileID: 0}
@@ -2211,6 +2216,69 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &1969039965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969039959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b4cf9d5f3d24460b8fadeb45c6b45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridMovement
+  moveDuration: 0.1
+  gridSize: 1
+  blockingLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  HasControl: 0
+--- !u!1 &2083901360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2083901362}
+  - component: {fileID: 2083901361}
+  m_Layer: 0
+  m_Name: GameSystems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2083901361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083901360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb9871a10a08aa40ac4e309ea12ba39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _player: {fileID: 569174710}
+--- !u!4 &2083901362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083901360}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3109, y: 0.30067, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2101156043
 GameObject:
   m_ObjectHideFlags: 0
@@ -2334,6 +2402,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   talkButton: {fileID: 109342838}
   hackButton: {fileID: 1538071957}
+  playerMovement: {fileID: 0}
+  npcMovement: {fileID: 0}
   hiddenButton: {fileID: 554778217}
 --- !u!61 &2101156048
 BoxCollider2D:
@@ -2395,3 +2465,4 @@ SceneRoots:
   - {fileID: 1441511521}
   - {fileID: 1703441942}
   - {fileID: 554778221}
+  - {fileID: 2083901362}

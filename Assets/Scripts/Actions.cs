@@ -5,7 +5,11 @@ public class Actions : MonoBehaviour
 {
     public Button talkButton;
     public Button hackButton;
-    
+
+    // NEW: assign these in the inspector for the current interaction
+    public GridMovement playerMovement;
+    public GridMovement npcMovement;
+
     public GameObject hiddenButton;
 
     private void Start()
@@ -27,5 +31,13 @@ public class Actions : MonoBehaviour
     private void OnHack()
     {
         Debug.Log("Hack button clicked!");
+        if (npcMovement && HackManager.Instance)
+        {
+            HackManager.Instance.BeginHack(npcMovement);
+        }
+        else
+        {
+            Debug.LogWarning("Hack failed: npcMovement or HackManager missing.");
+        }
     }
 }

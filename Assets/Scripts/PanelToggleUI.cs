@@ -15,17 +15,13 @@ public class PanelToggleUI : MonoBehaviour
 
     void Update()
     {
+        // NEW: while hacking, ignore the Space toggle here
+        if (HackManager.IsHacking) return;
+
         if (Input.GetKeyDown(toggleKey))
         {
-            if (!_isOpen)
-            {
-                OpenPanel();
-            }
-            else
-            {
-                SubmitCurrentSelection();
-                ClosePanel();
-            }
+            if (!_isOpen) OpenPanel();
+            else { SubmitCurrentSelection(); ClosePanel(); }
         }
     }
 

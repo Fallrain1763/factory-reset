@@ -5,9 +5,13 @@ public class GridMovement : MonoBehaviour
 {
     [SerializeField] private float moveDuration = 0.1f;
     [SerializeField] private float gridSize = 1f;
-    [SerializeField] private LayerMask blockingLayer; // <- assign in Inspector (walls, NPCs, etc.)
+    [SerializeField] private LayerMask blockingLayer;
 
     private bool _isMoving = false;
+
+    // NEW: who is currently allowed to read input?
+    public bool HasControl = true;
+
     public bool IsPaused { get; private set; } = false;
 
     public void SetPaused(bool paused)
@@ -18,9 +22,9 @@ public class GridMovement : MonoBehaviour
     private void Update()
     {
         if (IsPaused) return;
+        if (!HasControl) return;         // NEW: gate input when not controlled
         if (_isMoving) return;
 
-        // Input handler: WASD + Arrow Keys
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             TryMove(Vector2.up);
         else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
@@ -35,7 +39,6 @@ public class GridMovement : MonoBehaviour
     {
         Vector2 targetPos = (Vector2)transform.position + direction * gridSize;
 
-        // Check for collision
         Collider2D hit = Physics2D.OverlapCircle(targetPos, 0.1f, blockingLayer);
         if (hit == null)
         {

@@ -6,10 +6,13 @@ public class LazerCollision : MonoBehaviour
         if (other.CompareTag("Robot"))
         {
             GlobalGameState.lazerHitRobot = true;
-            
-            other.gameObject.SetActive(false); 
+
+            // NEW: if this robot was hacked, give control back to player
+            if (HackManager.Instance)
+                HackManager.Instance.NotifyActorKilled(other.gameObject);
+
+            other.gameObject.SetActive(false);
             gameObject.SetActive(false);
-            
         }
     }
 }

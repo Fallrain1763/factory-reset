@@ -2072,6 +2072,7 @@ GameObject:
   - component: {fileID: 1969039963}
   - component: {fileID: 1969039964}
   - component: {fileID: 1969039965}
+  - component: {fileID: 1969039966}
   m_Layer: 6
   m_Name: Robot
   m_TagString: Robot
@@ -2234,6 +2235,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   HasControl: 0
+--- !u!114 &1969039966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969039959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb8f130ae44c4d3ca564c4ba8d0db5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Actions
+  talkButton: {fileID: 109342838}
+  hackButton: {fileID: 1538071957}
+  hiddenButton: {fileID: 554778217}
+  npcMovement: {fileID: 1969039965}
+  panel: {fileID: 2101156046}
 --- !u!1 &2083901360
 GameObject:
   m_ObjectHideFlags: 0
@@ -2290,7 +2308,6 @@ GameObject:
   - component: {fileID: 2101156045}
   - component: {fileID: 2101156044}
   - component: {fileID: 2101156046}
-  - component: {fileID: 2101156047}
   - component: {fileID: 2101156048}
   m_Layer: 0
   m_Name: Checkerboard_0
@@ -2384,27 +2401,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3fb092b316f4298b7db90aec91ac92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  panel: {fileID: 102109659}
-  firstSelectable: {fileID: 109342838}
-  playerMovement: {fileID: 569174710}
   toggleKey: 32
---- !u!114 &2101156047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2101156043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bb8f130ae44c4d3ca564c4ba8d0db5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  talkButton: {fileID: 109342838}
-  hackButton: {fileID: 1538071957}
-  playerMovement: {fileID: 0}
-  npcMovement: {fileID: 0}
-  hiddenButton: {fileID: 554778217}
+  panelRoot: {fileID: 102109659}
+  actions: {fileID: 1969039966}
+  player: {fileID: 569174712}
+  playerMovement: {fileID: 569174710}
+  npcTag: Robot
+  gridSize: 1
+  gridOrigin: {x: 0, y: 0}
+  debug: 0
+  probeRadius: 0.22
 --- !u!61 &2101156048
 BoxCollider2D:
   m_ObjectHideFlags: 0

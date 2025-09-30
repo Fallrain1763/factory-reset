@@ -3,62 +3,53 @@ using UnityEngine;
 public class HackManager : MonoBehaviour
 {
     public static HackManager Instance { get; private set; }
-
     public static bool IsHacking => Instance && Instance._currentHacked != null;
 
-    [SerializeField] private GridMovement _player;   // assign in Inspector (your main player)
-    private GridMovement _currentHacked;             // NPC being controlled
+    // NEW: short UI suppress after ending hack
+    private float _inputSuppressTimer = 0f;
+    public static bool SuppressUI => Instance && Instance._inputSuppressTimer > 0f;
 
-    private void Awake()
+    [SerializeField] private GridMovement _player;
+    private GridMovement _currentHacked;
+
+    void Awake()
     {
         if (Instance && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
     }
 
-    private void Update()
+    void Update()
     {
-        // Space ends hacking (if we are hacking)
+        if (_inputSuppressTimer > 0f) _inputSuppressTimer -= Time.deltaTime;
+
         if (IsHacking && Input.GetKeyDown(KeyCode.Space))
-        {
             EndHack();
-        }
     }
 
     public void BeginHack(GridMovement npc)
     {
-        if (!npc) return;
-        if (!_player) { Debug.LogWarning("HackManager: Player reference not set."); return; }
+        if (!_player || !npc) return;
 
-        // Give control to NPC
         _player.HasControl = false;
         npc.HasControl = true;
         _currentHacked = npc;
-
-        // Optional: visually indicate hacking (tint, UI, etc.)
-        Debug.Log($"[Hack] Took control of {npc.name}");
+        // optional: close any open panel here if you hold a ref to it
     }
 
     public void EndHack()
     {
         if (!_player) return;
 
-        // Return control to player
         _player.HasControl = true;
-
-        if (_currentHacked)
-            _currentHacked.HasControl = false;
-
-        Debug.Log("[Hack] Control returned to Player");
+        if (_currentHacked) _currentHacked.HasControl = false;
         _currentHacked = null;
+
+        _inputSuppressTimer = 0.15f; // NEW: debounce Space for one tick
     }
 
-    // Call this when something dies/despawns to ensure control returns
     public void NotifyActorKilled(GameObject actorGO)
     {
-        if (!actorGO) return;
         if (_currentHacked && actorGO == _currentHacked.gameObject)
-        {
             EndHack();
-        }
     }
 }

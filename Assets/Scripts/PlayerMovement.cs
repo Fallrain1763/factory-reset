@@ -11,6 +11,7 @@ public class GridMovement : MonoBehaviour
 
     // NEW: who is currently allowed to read input?
     public bool HasControl = true;
+    private Vector2 direction;
 
     public bool IsPaused { get; private set; } = false;
 
@@ -25,14 +26,22 @@ public class GridMovement : MonoBehaviour
         if (!HasControl) return;         // NEW: gate input when not controlled
         if (_isMoving) return;
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            TryMove(Vector2.up);
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-            TryMove(Vector2.down);
-        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            TryMove(Vector2.left);
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            TryMove(Vector2.right);
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {
+            direction = Vector2.up;
+            TryMove(direction);
+        }
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) {
+            direction = Vector2.down;
+            TryMove(direction);
+        }
+        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
+            direction = Vector2.left;
+            TryMove(direction);
+        }
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
+            direction = Vector2.right;
+            TryMove(direction);
+        }
     }
 
     private void TryMove(Vector2 direction)
@@ -46,7 +55,15 @@ public class GridMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log("Blocked by: " + hit.name);
+            if (hit.tag == "Box")
+            {
+                Debug.Log("pushing box");
+                hit.GetComponent<Pushable>().Push(direction);
+            }
+            else
+            {
+                Debug.Log("Blocked by: " + hit.name);
+            }
         }
     }
 

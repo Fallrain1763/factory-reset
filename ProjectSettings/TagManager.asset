@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Robot
   - Lazer
+  - Box
   layers:
   - Default
   - TransparentFX

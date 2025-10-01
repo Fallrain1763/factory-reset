@@ -508,6 +508,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &229991187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 229991189}
+  - component: {fileID: 229991188}
+  m_Layer: 0
+  m_Name: GameSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &229991188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229991187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb9871a10a08aa40ac4e309ea12ba39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HackManager
+  _player: {fileID: 569174710}
+--- !u!4 &229991189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229991187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3375, y: 1.86, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &452799663
 GameObject:
   m_ObjectHideFlags: 0
@@ -3446,9 +3491,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   toggleKey: 32
-  panelRoot: {fileID: 0}
-  actions: {fileID: 0}
-  player: {fileID: 0}
+  panelRoot: {fileID: 102109659}
+  actions: {fileID: 2101156047}
+  player: {fileID: 569174712}
   playerMovement: {fileID: 569174710}
   npcTag: Robot
   gridSize: 1
@@ -3462,7 +3507,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101156043}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bb8f130ae44c4d3ca564c4ba8d0db5a, type: 3}
   m_Name: 
@@ -3470,8 +3515,8 @@ MonoBehaviour:
   talkButton: {fileID: 109342838}
   hackButton: {fileID: 1538071957}
   hiddenButton: {fileID: 0}
-  npcMovement: {fileID: 0}
-  panel: {fileID: 0}
+  npcMovement: {fileID: 1969039966}
+  panel: {fileID: 2101156046}
 --- !u!61 &2101156048
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3607,3 +3652,4 @@ SceneRoots:
   - {fileID: 1126536610}
   - {fileID: 1497011208}
   - {fileID: 991923358}
+  - {fileID: 229991189}

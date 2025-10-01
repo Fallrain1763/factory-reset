@@ -14,5 +14,10 @@ public class LazerCollision : MonoBehaviour
             other.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }
+        else if (other.CompareTag("Box"))
+        {
+            other.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
     }
 }

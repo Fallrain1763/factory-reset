@@ -13,7 +13,7 @@ public class Pushable : MonoBehaviour
 
         // Optional: add collision/physics check
         Collider2D hit = Physics2D.OverlapCircle(targetPos, 0.1f, LayerMask.GetMask("Blocking"));
-        if (hit == null)
+        if (hit == null || hit.CompareTag("Lazer"))
         {
             StartCoroutine(Move(targetPos));
         }

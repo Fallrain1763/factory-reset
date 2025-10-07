@@ -1,39 +1,46 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+
 public class Pushable : MonoBehaviour
 {
     [SerializeField] private float gridSize = 1f;
-    public void Push(Vector2 direction)
+    [SerializeField] private float moveDuration = 0.1f;
+    [SerializeField] private LayerMask blockingLayer;   // set to Blocking in Inspector
+    [SerializeField] private string laserTag = "Laser"; // must match your Laser tag
+
+    public bool Push(Vector2 direction)
     {
-        // Convert to float Vector2
-        Vector2 move = new Vector2(direction.x, direction.y) * gridSize;
+        // Calculate target pos for the box
+        Vector2 targetPos = (Vector2)transform.position + direction * gridSize;
 
-        // Check if target space is blocked before moving
-        Vector2 targetPos = (Vector2)transform.position + move;
+        // Is that target cell free for the box?
+        var hits = Physics2D.OverlapCircleAll(targetPos, 0.1f, blockingLayer);
 
-        // Optional: add collision/physics check
-        Collider2D hit = Physics2D.OverlapCircle(targetPos, 0.1f, LayerMask.GetMask("Blocking"));
-        if (hit == null || hit.CompareTag("Lazer"))
+        foreach (var h in hits)
         {
-            StartCoroutine(Move(targetPos));
+            if (!h) continue;
+
+            if (h.isTrigger) continue;              // triggers don't block
+            if (h.CompareTag(laserTag)) continue;   // allow into lasers (optional)
+
+            // Another solid thing there → can't push
+            // Debug.Log("Blocked! Can't push into " + h.name);
+            return false;
         }
-        else
-        {
-            Debug.Log("Blocked! Can't push into " + hit.name);
-        }
+
+        StartCoroutine(Move(targetPos));
+        return true;
     }
 
     private IEnumerator Move(Vector2 targetPos)
     {
+        Vector2 start = transform.position;
+        float t = 0f;
 
-        Vector2 startPosition = transform.position;
-        float elapsed = 0f;
-
-        while (elapsed < 0.1f)
+        while (t < moveDuration)
         {
-            elapsed += Time.deltaTime;
-            float t = elapsed / 0.1f;
-            transform.position = Vector2.Lerp(startPosition, targetPos, t);
+            t += Time.deltaTime;
+            transform.position = Vector2.Lerp(start, targetPos, t / moveDuration);
             yield return null;
         }
 

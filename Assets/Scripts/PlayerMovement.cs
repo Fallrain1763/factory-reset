@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class GridMovement : MonoBehaviour
@@ -48,24 +48,84 @@ public class GridMovement : MonoBehaviour
     {
         Vector2 targetPos = (Vector2)transform.position + direction * gridSize;
 
-        Collider2D hit = Physics2D.OverlapCircle(targetPos, 0.1f, blockingLayer);
-        if (hit == null)
+        var hits = Physics2D.OverlapCircleAll(targetPos, 0.1f, blockingLayer);
+
+        bool blockedBySolid = false;
+        Pushable pushableInFront = null;
+
+        foreach (var h in hits)
         {
-            StartCoroutine(Move(targetPos));
+            if (!h) continue;
+
+            bool isLaser = h.CompareTag("Laser");
+            bool iAmRobot = CompareTag("Robot");
+
+            // --- LASER RULES ---
+            // Robots can step into lasers; everyone else is blocked by lasers.
+            if (isLaser)
+            {
+                if (iAmRobot)
+                {
+                    // allow robot to move into laser cell
+                    continue;
+                }
+                else
+                {
+                    blockedBySolid = true;  // player (or other) is blocked by laser
+                    break;
+                }
+            }
+
+            // Non-laser triggers don't block
+            if (h.isTrigger) continue;
+
+            // Pushable in front? remember it; don't mark blocked yet
+            var p = h.GetComponentInParent<Pushable>();
+            if (p != null)
+            {
+                pushableInFront = p;
+                continue;
+            }
+
+            // Anything else on Blocking is a wall/solid
+            blockedBySolid = true;
+            break;
         }
-        else
+
+        if (blockedBySolid) return;
+
+        // Handle pushing a box (if any)
+        if (pushableInFront != null)
         {
-            if (hit.tag == "Box")
+            Vector2 boxTarget = (Vector2)pushableInFront.transform.position + direction * gridSize;
+            var boxHits = Physics2D.OverlapCircleAll(boxTarget, 0.1f, blockingLayer);
+
+            bool boxBlocked = false;
+            foreach (var h in boxHits)
             {
-                Debug.Log("pushing box");
-                hit.GetComponent<Pushable>().Push(direction);
+                if (!h) continue;
+
+                // Boxes may pass into lasers if you want that behavior; otherwise remove this line.
+                if (h.CompareTag("Laser")) continue;
+
+                if (h.isTrigger) continue;
+
+                boxBlocked = true;
+                break;
             }
-            else
-            {
-                Debug.Log("Blocked by: " + hit.name);
-            }
+
+            if (boxBlocked) return;
+
+            // Push the box first
+            pushableInFront.Push(direction);
         }
+
+        // Move actor
+        StartCoroutine(Move(targetPos));
     }
+
+
+
 
     private IEnumerator Move(Vector2 targetPos)
     {

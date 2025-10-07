@@ -1852,7 +1852,7 @@ GameObject:
   - component: {fileID: 1441511522}
   m_Layer: 6
   m_Name: Lazer
-  m_TagString: Lazer
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2785,7 +2785,7 @@ MonoBehaviour:
   gridSize: 1
   blockingLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   HasControl: 0
 --- !u!114 &1969039966
 MonoBehaviour:

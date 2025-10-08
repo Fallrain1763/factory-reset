@@ -36,7 +36,7 @@ public class PanelToggleUI : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(toggleKey))
+        if (Input.GetKeyDown(toggleKey) && !GlobalGameState.dialogueActive)
         {
             if (!_isOpen)
             {

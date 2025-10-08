@@ -37,6 +37,7 @@ public class Actions : MonoBehaviour
 
     private void OnHack()
     {
+        dialogue.hacked = true;
         if (!HackManager.Instance) { Debug.LogWarning("[Actions] HackManager missing."); return; }
         if (!npcMovement) { Debug.LogWarning("[Actions] No npcMovement set for hack."); return; }
 

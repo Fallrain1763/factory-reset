@@ -8,6 +8,10 @@ namespace DialogueScripts
         public string name;
         
         public string[] sentences;
+        
+        public string[] hackedSentences;
+
+        public bool hacked;
 
     }
 }

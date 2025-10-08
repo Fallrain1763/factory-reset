@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,10 @@ using TMPro;
 namespace DialogueScripts
 {
     public class DialogueManager : MonoBehaviour {
-        private static readonly int IsOpen = Animator.StringToHash("IsOpen");
 
         public TMP_Text nameText;
         public TMP_Text dialogueText;
+        public GameObject dialogueBox;
 
         private Queue<string> _sentences;
 
@@ -21,14 +22,31 @@ namespace DialogueScripts
 
         public void StartDialogue (Dialogue dialogue)
         {
+            GlobalGameState.dialogueActive = true;
             
+            GlobalGameState.swallowNextSpace = true;
+            
+            Time.timeScale = 0f;
+            
+            if (dialogueBox) dialogueBox.SetActive(true);
+                
             nameText.text = dialogue.name;
 
             _sentences.Clear();
 
-            foreach (string sentence in dialogue.sentences)
+            if (dialogue.hacked)
             {
-                _sentences.Enqueue(sentence);
+                foreach (string sentence in dialogue.hackedSentences)
+                {
+                    _sentences.Enqueue(sentence);
+                }
+            }
+            else
+            {
+                foreach (string sentence in dialogue.sentences)
+                {
+                    _sentences.Enqueue(sentence);
+                }
             }
 
             DisplayNextSentence();
@@ -58,8 +76,28 @@ namespace DialogueScripts
             }
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && GlobalGameState.dialogueActive)
+            {
+                if (GlobalGameState.swallowNextSpace)
+                {
+                    GlobalGameState.swallowNextSpace = false; 
+                    return;
+                }
+                DisplayNextSentence();
+            }
+        }
+
         void EndDialogue()
         {
+            GlobalGameState.dialogueActive = false;
+            
+            Time.timeScale = 1f;
+            
+            if (dialogueBox) dialogueBox.SetActive(false);
+            
+            
             Debug.Log("Ending dialogue");
         }
 

@@ -1,3 +1,5 @@
+using System;
+using DialogueScripts;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -7,6 +9,7 @@ public class Actions : MonoBehaviour
     public Button talkButton;
     public Button hackButton;
     public GameObject hiddenButton;
+    public Dialogue dialogue;
 
     public GridMovement npcMovement;                 // set by PanelToggleUI.SetTarget(...)
     [SerializeField] private PanelToggleUI panel;    // drag your PanelToggleUI here
@@ -21,11 +24,13 @@ public class Actions : MonoBehaviour
     {
         npcMovement = npc;
     }
-
+    
     private void OnTalk()
     {
         if (hiddenButton)
             hiddenButton.SetActive(true);
+        
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
         Debug.Log("[Actions] Talk");
         panel?.ClosePanel("[Actions] Close after Talk");
     }

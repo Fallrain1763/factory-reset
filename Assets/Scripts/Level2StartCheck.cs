@@ -1,3 +1,4 @@
+using DialogueScripts;
 using UnityEngine;
 
 public class Level2StartCheck : MonoBehaviour
@@ -11,6 +12,15 @@ public class Level2StartCheck : MonoBehaviour
             if (robot)
             {
                 Destroy(robot);
+            }
+        }
+
+        if (GlobalGameState.isRobotHacked)
+        {
+            if (robot)
+            {
+                Actions actions = robot.GetComponentInChildren<Actions>();
+                actions.dialogue.hacked = true; 
             }
         }
     }

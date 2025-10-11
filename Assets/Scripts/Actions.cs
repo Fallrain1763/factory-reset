@@ -10,9 +10,11 @@ public class Actions : MonoBehaviour
     public Button hackButton;
     public GameObject hiddenButton;
     public Dialogue dialogue;
+    [SerializeField] private DialogueManager dialogueManager;
 
     public GridMovement npcMovement;                 // set by PanelToggleUI.SetTarget(...)
     [SerializeField] private PanelToggleUI panel;    // drag your PanelToggleUI here
+    private bool _hiddenActivated = false;
 
     void Start()
     {
@@ -24,20 +26,26 @@ public class Actions : MonoBehaviour
     {
         npcMovement = npc;
     }
-    
+
+    private void Update()
+    {
+        if (hiddenButton && !GlobalGameState.dialogueActive && _hiddenActivated )
+            hiddenButton.SetActive(true);
+    }
+
     private void OnTalk()
     {
-        if (hiddenButton)
-            hiddenButton.SetActive(true);
-        
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        Debug.Log($"[Actions] Talk with dialogue: {dialogue.name}");
+        dialogueManager.StartDialogue(dialogue);
         Debug.Log("[Actions] Talk");
         panel?.ClosePanel("[Actions] Close after Talk");
+        _hiddenActivated = true;
     }
 
     private void OnHack()
     {
         dialogue.hacked = true;
+        GlobalGameState.isRobotHacked = true;
         if (!HackManager.Instance) { Debug.LogWarning("[Actions] HackManager missing."); return; }
         if (!npcMovement) { Debug.LogWarning("[Actions] No npcMovement set for hack."); return; }
 

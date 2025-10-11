@@ -38,6 +38,7 @@ public class PanelToggleUI : MonoBehaviour
 
         if (Input.GetKeyDown(toggleKey) && !GlobalGameState.dialogueActive)
         {
+            
             if (!_isOpen)
             {
                 var target = FindAdjacentTaggedNPC();

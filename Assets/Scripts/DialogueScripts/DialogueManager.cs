@@ -28,7 +28,10 @@ namespace DialogueScripts
             
             Time.timeScale = 0f;
             
-            if (dialogueBox) dialogueBox.SetActive(true);
+            if (dialogueBox)
+            {
+                dialogueBox.SetActive(true);
+            }
                 
             nameText.text = dialogue.name;
 
@@ -48,7 +51,8 @@ namespace DialogueScripts
                     _sentences.Enqueue(sentence);
                 }
             }
-
+            
+            Debug.Log(_sentences.Count);
             DisplayNextSentence();
 
         }

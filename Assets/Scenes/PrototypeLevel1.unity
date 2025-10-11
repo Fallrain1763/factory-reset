@@ -2180,6 +2180,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1875054597852133304, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1628.9854
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875054597852133304, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 173.285
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875054597852133304, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -85.507324
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875054597852133304, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -58.0607
+      objectReference: {fileID: 0}
     - target: {fileID: 6363781744554875430, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2260,6 +2276,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7719044603762245590, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8528048431305095171, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -2296,6 +2316,23 @@ PrefabInstance:
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: dialogue.sentences.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+      propertyPath: 'dialogue.sentences.Array.data[0]'
+      value: Hi! I'm a robot.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+      propertyPath: 'dialogue.sentences.Array.data[1]'
+      value: Just between you and me, I heard there's a secret keycard 2 paces north
+        and 4 paces west.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+      propertyPath: 'dialogue.sentences.Array.data[2]'
+      value: Please don't hack me!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+      propertyPath: 'dialogue.hackedSentences.Array.data[0]'
+      value: Ugh. I hated that, don't talk to me!
       objectReference: {fileID: 0}
     - target: {fileID: 8519569893781067633, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: m_LocalPosition.x

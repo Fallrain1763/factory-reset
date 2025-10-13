@@ -7,6 +7,8 @@ public class Level2StartCheck : MonoBehaviour
 
     private void Start()
     {
+        GlobalGameState.isLevel2 = true;
+        
         if (GlobalGameState.lazerHitRobot)
         {
             if (robot)

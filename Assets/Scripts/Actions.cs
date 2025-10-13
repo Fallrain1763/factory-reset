@@ -15,6 +15,7 @@ public class Actions : MonoBehaviour
     public GridMovement npcMovement;                 // set by PanelToggleUI.SetTarget(...)
     [SerializeField] private PanelToggleUI panel;    // drag your PanelToggleUI here
     private bool _hiddenActivated = false;
+    private bool _goToPressurePlate= false;
 
     void Start()
     {
@@ -29,8 +30,11 @@ public class Actions : MonoBehaviour
 
     private void Update()
     {
-        if (hiddenButton && !GlobalGameState.dialogueActive && _hiddenActivated )
+        if (hiddenButton && !GlobalGameState.dialogueActive && _hiddenActivated && !GlobalGameState.isRobotHacked)
             hiddenButton.SetActive(true);
+        
+        if (!GlobalGameState.isRobotHacked && !GlobalGameState.dialogueActive && _goToPressurePlate )
+            transform.position = new Vector3(5.5f, 3.5f, 0f);
     }
 
     private void OnTalk()
@@ -39,7 +43,9 @@ public class Actions : MonoBehaviour
         dialogueManager.StartDialogue(dialogue);
         Debug.Log("[Actions] Talk");
         panel?.ClosePanel("[Actions] Close after Talk");
-        _hiddenActivated = true;
+       // if (GlobalGameState.isLevel1) 
+            _hiddenActivated = true;
+        if (GlobalGameState.isLevel2) _goToPressurePlate = true;
     }
 
     private void OnHack()

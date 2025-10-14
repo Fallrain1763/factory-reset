@@ -81,7 +81,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.4811321, g: 0.28601953, b: 0.18382877, a: 1}
   m_FlipX: 0
@@ -179,3 +179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pushable
   gridSize: 1
+  moveDuration: 0.1
+  blockingLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  laserTag: Laser

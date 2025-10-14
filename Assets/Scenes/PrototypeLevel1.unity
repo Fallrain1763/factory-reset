@@ -812,7 +812,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 32767
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.14806795, g: 0.8867924, b: 0.037646834, a: 1}
   m_FlipX: 0
@@ -2297,6 +2297,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 447788424591386961, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 962351782160720260, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416228731862078858, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 1644554036241370931, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: m_Name
       value: Robot

@@ -566,9 +566,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caffe67c14aff09419c7a5d2c08b7d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorController
-  plateA: {fileID: 817416130}
-  plateB: {fileID: 769438971}
+  plates:
+  - {fileID: 817416130}
+  - {fileID: 769438971}
+  requiredPressedCount: 2
   doorToDisable: {fileID: 1441511518}
+  permanentOnceOpened: 1
   isOpen: 0
 --- !u!114 &328197290 stripped
 MonoBehaviour:

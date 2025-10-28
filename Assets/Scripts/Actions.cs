@@ -45,7 +45,7 @@ public class Actions : MonoBehaviour
         panel?.ClosePanel("[Actions] Close after Talk");
        // if (GlobalGameState.isLevel1) 
             _hiddenActivated = true;
-        if (GlobalGameState.isLevel2) _goToPressurePlate = true;
+        if (GlobalGameState.isLevel2 || GlobalGameState.isLevel3) _goToPressurePlate = true;
     }
 
     private void OnHack()

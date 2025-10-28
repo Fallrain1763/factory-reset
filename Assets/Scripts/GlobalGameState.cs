@@ -8,5 +8,5 @@ public static class GlobalGameState
     public static bool isRobotHacked =  false;
     public static bool isLevel1 ;
     public static bool isLevel2 = false;
-    
+    public static bool isLevel3 = false;
 }

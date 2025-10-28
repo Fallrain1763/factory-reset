@@ -1,34 +1,90 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DoorLatchController : MonoBehaviour
 {
-    public PressurePlate2D plateA;
-    public PressurePlate2D plateB;
-    public GameObject doorToDisable; // can be the door root or a visual/collider child
-    public bool isOpen;
+    [Header("Plates & Requirement")]
+    [Tooltip("Add any number of PressurePlate2D components here.")]
+    public List<PressurePlate2D> plates = new List<PressurePlate2D>();
+
+    [Tooltip("How many plates must be pressed to open. <=0 means ALL plates.")]
+    public int requiredPressedCount = 0;
+
+    [Header("Target")]
+    [Tooltip("The laser/door root to disable when opened.")]
+    public GameObject doorToDisable;
+
+    [Header("Behavior")]
+    [Tooltip("If true, once opened it stays open even if plates are released.")]
+    public bool permanentOnceOpened = true;
+
+    [SerializeField] private bool isOpen;
 
     private void OnEnable()
     {
-        if (plateA) plateA.OnPressChanged += OnPlateChanged;
-        if (plateB) plateB.OnPressChanged += OnPlateChanged;
-        TryOpen();
+        Subscribe(true);
+        Recompute();
     }
 
     private void OnDisable()
     {
-        if (plateA) plateA.OnPressChanged -= OnPlateChanged;
-        if (plateB) plateB.OnPressChanged -= OnPlateChanged;
+        Subscribe(false);
     }
 
-    private void OnPlateChanged(bool _) => TryOpen();
-
-    private void TryOpen()
+    private void Subscribe(bool add)
     {
-        if (isOpen || plateA == null || plateB == null || doorToDisable == null) return;
-        if (plateA.IsPressed && plateB.IsPressed)
+        if (plates == null) return;
+
+        foreach (var p in plates)
         {
-            isOpen = true;
-            doorToDisable.SetActive(false); // permanently open
+            if (!p) continue;
+            if (add) p.OnPressChanged += OnPlateChanged;
+            else p.OnPressChanged -= OnPlateChanged;
+        }
+    }
+
+    private void OnPlateChanged(bool _)
+    {
+        Recompute();
+    }
+
+    private int PressedCount()
+    {
+        if (plates == null) return 0;
+
+        int count = 0;
+        foreach (var p in plates)
+            if (p && p.IsPressed) count++;
+        return count;
+    }
+
+    private bool RequirementMet()
+    {
+        int total = plates?.Count ?? 0;
+        if (total == 0) return false;
+
+        int need = (requiredPressedCount <= 0) ? total : Mathf.Min(requiredPressedCount, total);
+        return PressedCount() >= need;
+    }
+
+    private void Recompute()
+    {
+        if (!doorToDisable) return;
+
+        if (permanentOnceOpened)
+        {
+            if (isOpen) return;
+            if (RequirementMet())
+            {
+                isOpen = true;
+                doorToDisable.SetActive(false); // permanently open
+            }
+        }
+        else
+        {
+            bool openNow = RequirementMet();
+            isOpen = openNow;
+            doorToDisable.SetActive(!openNow); // toggle with plate states
         }
     }
 }

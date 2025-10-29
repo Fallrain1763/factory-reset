@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 public class LazerCollision : MonoBehaviour
 {
@@ -5,8 +6,11 @@ public class LazerCollision : MonoBehaviour
     {
         if (other.CompareTag("Robot"))
         {
-            if (GlobalGameState.isLevel1 || GlobalGameState.isLevel2) 
+            if (GlobalGameState.isLevel1 || GlobalGameState.isLevel2)
+            {
                 GlobalGameState.lazerHitRobot = true;
+                Debug.Log("LazerHitRobot");
+            }
             if (GlobalGameState.isLevel3) 
                 GlobalGameState.lazerHitRobot2 = true;
 

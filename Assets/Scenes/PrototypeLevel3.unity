@@ -4777,7 +4777,7 @@ MonoBehaviour:
   hackButton: {fileID: 1538071957}
   hiddenButton: {fileID: 0}
   dialogue:
-    name: Bot
+    name: Blue Bot
     sentences:
     - Thanks for rescuing me!!!
     - Please don't hack me

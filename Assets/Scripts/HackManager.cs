@@ -25,6 +25,14 @@ public class HackManager : MonoBehaviour
         if (IsHacking && Input.GetKeyDown(KeyCode.Space))
             EndHack();
     }
+    
+    public GridMovement GetCurrentControlled()
+    {
+        if (IsHacking && _currentHacked)
+            return _currentHacked;
+
+        return _player;
+    }
 
     public void BeginHack(GridMovement npc)
     {

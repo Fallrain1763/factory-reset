@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Actions : MonoBehaviour
+public class Actions2 : MonoBehaviour
 {
     public Button talkButton;
     public Button hackButton;
@@ -13,7 +13,7 @@ public class Actions : MonoBehaviour
     [SerializeField] private DialogueManager dialogueManager;
 
     public GridMovement npcMovement;                 // set by PanelToggleUI.SetTarget(...)
-    [SerializeField] private PanelToggleUI panel;    // drag your PanelToggleUI here
+    [SerializeField] private PanelToggleUI2 panel;    // drag your PanelToggleUI here
     private bool _hiddenActivated = false;
     private bool _goToPressurePlate= false;
 
@@ -51,9 +51,7 @@ public class Actions : MonoBehaviour
     private void OnHack()
     {
         dialogue.hacked = true;
-        if (GlobalGameState.isLevel1 || GlobalGameState.isLevel2) 
-            GlobalGameState.isRobotHacked = true;
-        if (GlobalGameState.isLevel3) GlobalGameState.isRobotHacked2 = true;
+        GlobalGameState.isRobotHacked = true;
         if (!HackManager.Instance) { Debug.LogWarning("[Actions] HackManager missing."); return; }
         if (!npcMovement) { Debug.LogWarning("[Actions] No npcMovement set for hack."); return; }
 

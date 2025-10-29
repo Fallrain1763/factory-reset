@@ -5,7 +5,10 @@ public class LazerCollision : MonoBehaviour
     {
         if (other.CompareTag("Robot"))
         {
-            GlobalGameState.lazerHitRobot = true;
+            if (GlobalGameState.isLevel1 || GlobalGameState.isLevel2) 
+                GlobalGameState.lazerHitRobot = true;
+            if (GlobalGameState.isLevel3) 
+                GlobalGameState.lazerHitRobot2 = true;
 
             // NEW: if this robot was hacked, give control back to player
             if (HackManager.Instance)

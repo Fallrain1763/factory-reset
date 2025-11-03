@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 102109661}
   - component: {fileID: 102109660}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ActionMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 109342840}
   - component: {fileID: 109342839}
   - component: {fileID: 109342838}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: TalkButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1462,6 +1462,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8261056025070241282, guid: 98c42eec4ebc0e6449227a71e4b73a8e, type: 3}
+      propertyPath: blockingLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1718,7 +1722,7 @@ GameObject:
   - component: {fileID: 1210573916}
   - component: {fileID: 1210573915}
   - component: {fileID: 1210573914}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1957,7 +1961,7 @@ GameObject:
   - component: {fileID: 1261393908}
   - component: {fileID: 1261393910}
   - component: {fileID: 1261393909}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2704,7 +2708,7 @@ GameObject:
   - component: {fileID: 1538071959}
   - component: {fileID: 1538071958}
   - component: {fileID: 1538071957}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: HackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3511,7 +3515,7 @@ GameObject:
   - component: {fileID: 1837445874}
   - component: {fileID: 1837445876}
   - component: {fileID: 1837445875}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3767,7 +3771,7 @@ GameObject:
   - component: {fileID: 1969039964}
   - component: {fileID: 1969039965}
   - component: {fileID: 1969039966}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Robot
   m_TagString: Robot
   m_Icon: {fileID: 0}
@@ -3856,7 +3860,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969039959}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -3954,7 +3958,7 @@ MonoBehaviour:
   gridSize: 1
   blockingLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   HasControl: 0
 --- !u!1 &2101156043
 GameObject:

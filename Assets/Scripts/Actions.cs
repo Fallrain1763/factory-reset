@@ -32,8 +32,16 @@ public class Actions : MonoBehaviour
     {
         if (hiddenButton && !GlobalGameState.dialogueActive && _hiddenActivated && !GlobalGameState.isRobotHacked)
             hiddenButton.SetActive(true);
+
+        if (GlobalGameState.isLevel3)
+        {
+            if (!GlobalGameState.dialogueActive && _goToPressurePlate)
+            {
+                transform.position = new Vector3(5.5f, 3.5f, 0f);
+            }
+        }
         
-        if (!GlobalGameState.isRobotHacked && !GlobalGameState.dialogueActive && _goToPressurePlate )
+        else if (!GlobalGameState.isRobotHacked && !GlobalGameState.dialogueActive && _goToPressurePlate )
             transform.position = new Vector3(5.5f, 3.5f, 0f);
     }
 
@@ -43,9 +51,8 @@ public class Actions : MonoBehaviour
         dialogueManager.StartDialogue(dialogue);
         Debug.Log("[Actions] Talk");
         panel?.ClosePanel("[Actions] Close after Talk");
-       // if (GlobalGameState.isLevel1) 
-            _hiddenActivated = true;
-        if (GlobalGameState.isLevel2 || GlobalGameState.isLevel3) _goToPressurePlate = true;
+        if (GlobalGameState.isLevel1) { _hiddenActivated = true; }
+        if (GlobalGameState.isLevel2 || GlobalGameState.isLevel3) { _goToPressurePlate = true; }
     }
 
     private void OnHack()
@@ -53,7 +60,7 @@ public class Actions : MonoBehaviour
         dialogue.hacked = true;
         if (GlobalGameState.isLevel1 || GlobalGameState.isLevel2) 
             GlobalGameState.isRobotHacked = true;
-        if (GlobalGameState.isLevel3) GlobalGameState.isRobotHacked2 = true;
+        if (GlobalGameState.isLevel3) { GlobalGameState.isRobotHacked2 = true; }
         if (!HackManager.Instance) { Debug.LogWarning("[Actions] HackManager missing."); return; }
         if (!npcMovement) { Debug.LogWarning("[Actions] No npcMovement set for hack."); return; }
 

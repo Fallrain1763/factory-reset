@@ -4804,7 +4804,7 @@ MonoBehaviour:
   gridSize: 1
   blockingLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   HasControl: 0
 --- !u!1 &2101156043
 GameObject:

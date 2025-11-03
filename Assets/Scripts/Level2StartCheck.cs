@@ -21,8 +21,8 @@ public class Level2StartCheck : MonoBehaviour
         {
             if (robot)
             {
-                Actions actions = robot.GetComponentInChildren<Actions>();
-                actions.dialogue.hacked = true; 
+                DialogueHolder dialHol = robot.GetComponentInChildren<DialogueHolder>();
+                dialHol.dialogue.hacked = true; 
             }
         }
     }

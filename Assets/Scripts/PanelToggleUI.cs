@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Runtime.InteropServices;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 
@@ -36,6 +37,14 @@ public class PanelToggleUI : MonoBehaviour
             if (_isOpen) ClosePanel("[PTUI] Closing because hacking/suppress is active.");
             return;
         }
+        //Shuchen fix here:
+        var best = FindAdjacentTaggedNPC();
+        if (best)
+        {
+            Debug.Log("Space");
+        }
+        
+
 
         if (Input.GetKeyDown(toggleKey) && !GlobalGameState.dialogueActive)
         {

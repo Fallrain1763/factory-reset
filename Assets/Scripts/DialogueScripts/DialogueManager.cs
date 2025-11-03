@@ -39,6 +39,8 @@ namespace DialogueScripts
 
             if (dialogue.hacked)
             {
+                Debug.Log("DIALOGUE HACKED: " + dialogue.hacked);
+                Debug.Log("Sentence: " + dialogue.hackedSentences);
                 foreach (string sentence in dialogue.hackedSentences)
                 {
                     _sentences.Enqueue(sentence);

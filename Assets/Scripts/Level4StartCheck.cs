@@ -24,7 +24,8 @@ public class Level4StartCheck : MonoBehaviour
             if (robot)
             {
                 Actions actions = robot.GetComponentInChildren<Actions>();
-                actions.dialogue.hacked = true; 
+                DialogueHolder dialHol = robot.GetComponentInChildren<DialogueHolder>();
+                dialHol.dialogue.hacked = true;
             }
         }
         
@@ -49,7 +50,8 @@ public class Level4StartCheck : MonoBehaviour
             if (robot2)
             {
                 Actions actions = robot2.GetComponentInChildren<Actions>();
-                actions.dialogue.hacked = true; 
+                DialogueHolder dialHol = robot2.GetComponentInChildren<DialogueHolder>();
+                dialHol.dialogue.hacked = true;
             }
         }
     }

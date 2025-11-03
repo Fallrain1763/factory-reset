@@ -10,6 +10,7 @@ public class Actions : MonoBehaviour
     public Button hackButton;
     public GameObject hiddenButton;
     public Dialogue dialogue;
+    //public Dialogue dialogue;
     [SerializeField] private DialogueManager dialogueManager;
 
     public GridMovement npcMovement;                 // set by PanelToggleUI.SetTarget(...)
@@ -29,14 +30,6 @@ public class Actions : MonoBehaviour
 
         // NEW: grab the Dialogue from the NPC you just targeted
         var holder = npc ? npc.GetComponentInParent<DialogueHolder>() : null;
-        if (holder && holder.dialogue != null)
-        {
-            dialogue = holder.dialogue;
-        }
-        else
-        {
-            Debug.LogWarning("[Actions] Target has no DialogueHolder or Dialogue is null.");
-        }
     }
 
     public void BindToTarget(GridMovement npc)

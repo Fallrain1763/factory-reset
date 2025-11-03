@@ -1152,11 +1152,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1080038346 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1644554036241370931, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
-  m_PrefabInstance: {fileID: 7380025951509375216}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1146601705
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,7 +2087,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
   m_PrefabInstance: {fileID: 7380025951509375216}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1080038346}
+  m_GameObject: {fileID: 7380025951509375218}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bb8f130ae44c4d3ca564c4ba8d0db5a, type: 3}
@@ -2544,7 +2539,7 @@ PrefabInstance:
       objectReference: {fileID: 554778217}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: dialogue.name
-      value: Red Bot
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: dialogueManager
@@ -2556,20 +2551,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: 'dialogue.sentences.Array.data[0]'
-      value: Hi! I'm a robot.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: 'dialogue.sentences.Array.data[1]'
-      value: Just between you and me, I heard there's a secret keycard 2 paces north
-        and 3 paces west.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: 'dialogue.sentences.Array.data[2]'
-      value: Please don't hack me!
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: 'dialogue.hackedSentences.Array.data[0]'
-      value: Ugh. I hated that, don't talk to me!
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8519569893781067633, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2617,26 +2611,31 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1644554036241370931, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7380025951509375222}
+      addedObject: {fileID: 7380025951509375219}
   m_SourcePrefab: {fileID: 100100000, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
 --- !u!114 &7380025951509375217 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4528793704803640710, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
   m_PrefabInstance: {fileID: 7380025951509375216}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1080038346}
+  m_GameObject: {fileID: 7380025951509375218}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81b4cf9d5f3d24460b8fadeb45c6b45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridMovement
---- !u!114 &7380025951509375222
+--- !u!1 &7380025951509375218 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1644554036241370931, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+  m_PrefabInstance: {fileID: 7380025951509375216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7380025951509375219
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1080038346}
+  m_GameObject: {fileID: 7380025951509375218}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74c66eea542455c4b8250ee85c7405a4, type: 3}

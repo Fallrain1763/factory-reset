@@ -1152,6 +1152,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1080038346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1644554036241370931, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+  m_PrefabInstance: {fileID: 7380025951509375216}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1146601705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,7 +1187,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5b269c541c7de8c4994c20122f8b0039, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.427
+  m_Volume: 0.06
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2087,7 +2092,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
   m_PrefabInstance: {fileID: 7380025951509375216}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1080038346}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bb8f130ae44c4d3ca564c4ba8d0db5a, type: 3}
@@ -2253,6 +2258,7 @@ MonoBehaviour:
   gridOrigin: {x: 0, y: 0}
   debug: 0
   probeRadius: 0.22
+  owner: {fileID: 7380025951509375217}
 --- !u!61 &2101156048
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2608,8 +2614,44 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1644554036241370931, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7380025951509375222}
   m_SourcePrefab: {fileID: 100100000, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+--- !u!114 &7380025951509375217 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4528793704803640710, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+  m_PrefabInstance: {fileID: 7380025951509375216}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080038346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b4cf9d5f3d24460b8fadeb45c6b45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridMovement
+--- !u!114 &7380025951509375222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080038346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c66eea542455c4b8250ee85c7405a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueHolder
+  dialogue:
+    name: Red Bot
+    sentences:
+    - Hi! I'm a robot.
+    - Just between you and me, I heard there's a secret keycard 2 paces north and
+      3 paces west.
+    - Please don't hack me!
+    hackedSentences:
+    - Ugh. I hated that, don't talk to me!
+    hacked: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

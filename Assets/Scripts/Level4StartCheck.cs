@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Level4StartCheck : MonoBehaviour
@@ -7,6 +8,7 @@ public class Level4StartCheck : MonoBehaviour
 
     private void Start()
     {
+        GlobalGameState.isLevel3 = false;
         GlobalGameState.isLevel4 = true;
         
         if (GlobalGameState.lazerHitRobot)
@@ -46,7 +48,7 @@ public class Level4StartCheck : MonoBehaviour
         {
             if (robot2)
             {
-                Actions2 actions = robot2.GetComponentInChildren<Actions2>();
+                Actions actions = robot2.GetComponentInChildren<Actions>();
                 actions.dialogue.hacked = true; 
             }
         }

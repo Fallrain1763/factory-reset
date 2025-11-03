@@ -22,7 +22,7 @@ public class HackManager : MonoBehaviour
     {
         if (_inputSuppressTimer > 0f) _inputSuppressTimer -= Time.deltaTime;
 
-        if (IsHacking && Input.GetKeyDown(KeyCode.Space))
+        if (IsHacking && _inputSuppressTimer <= 0f && Input.GetKeyDown(KeyCode.Space))
             EndHack();
     }
     
@@ -41,8 +41,11 @@ public class HackManager : MonoBehaviour
         _player.HasControl = false;
         npc.HasControl = true;
         _currentHacked = npc;
-        // optional: close any open panel here if you hold a ref to it
+
+        // NEW: soak the key that submitted the hack
+        _inputSuppressTimer = 0.15f;
     }
+
 
     public void EndHack()
     {

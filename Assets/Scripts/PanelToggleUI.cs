@@ -25,11 +25,12 @@ public class PanelToggleUI : MonoBehaviour
     [SerializeField] private bool debug = false;
     [SerializeField] private float probeRadius = 0.22f; // small circle at neighbor-cell center
 
+    [SerializeField] private GridMovement owner;
+
     private bool _isOpen;
 
     void Update()
     {
-        // If hacking or during debounce, don't let Space do anything
         if (HackManager.IsHacking || HackManager.SuppressUI)
         {
             if (_isOpen) ClosePanel("[PTUI] Closing because hacking/suppress is active.");
@@ -38,34 +39,26 @@ public class PanelToggleUI : MonoBehaviour
 
         if (Input.GetKeyDown(toggleKey) && !GlobalGameState.dialogueActive)
         {
-            
+            var target = FindAdjacentTaggedNPC();
+            if (target == null) { if (_isOpen) ClosePanel("[PTUI] No NPC nearby."); return; }
+
+            // >>> Only the panel whose owner IS the target handles this press <<<
+            if (target != owner) return;
+
             if (!_isOpen)
             {
-                var target = FindAdjacentTaggedNPC();
-
-                if (target == null)
-                {
-                    Debug.Log("[PTUI] Space pressed but no adjacent NPC found.");
-                    return;
-                }
-
-                if (actions == null)
-                {
-                    Debug.LogWarning("[PTUI] actions is NOT assigned in Inspector.");
-                    return;
-                }
-
-                actions.SetTarget(target); // wires npcMovement
-                OpenPanel("[PTUI] OpenPanel called after finding NPC: " + target.name);
+                if (actions == null) { Debug.LogWarning("[PTUI] actions not set."); return; }
+                actions.BindToTarget(target);
+                OpenPanel("[PTUI] OpenPanel (owner matched): " + target.name);
             }
             else
             {
-                // If you don't want Space to auto-submit, comment the next line
                 actions?.SubmitCurrentSelection();
-                ClosePanel("[PTUI] Closed by Space while open.");
+                return;
             }
         }
     }
+
 
     private void OpenPanel(string reasonLog = null)
     {
@@ -104,9 +97,11 @@ public class PanelToggleUI : MonoBehaviour
     {
         if (!player) return null;
 
-        // Just check colliders in a radius around player
-        float interactRadius = gridSize * 1.1f; // ~1 tile
+        float interactRadius = gridSize * 1.1f;
         var hits = Physics2D.OverlapCircleAll(player.position, interactRadius);
+
+        GridMovement best = null;
+        float bestDist = float.MaxValue;
 
         foreach (var h in hits)
         {
@@ -115,14 +110,16 @@ public class PanelToggleUI : MonoBehaviour
             if (!gm) continue;
             if (!gm.CompareTag(npcTag)) continue;
 
-            // Optional: require roughly 1 tile distance
             float dist = Vector2.Distance(player.position, gm.transform.position);
-            if (dist <= gridSize * 1.1f)
-                return gm;
+            if (dist <= interactRadius && dist < bestDist)
+            {
+                best = gm;
+                bestDist = dist;
+            }
         }
-
-        return null;
+        return best;
     }
+
 
 
     // Snap a world position to grid cell indices, honoring gridOrigin and gridSize

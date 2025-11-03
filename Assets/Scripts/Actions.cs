@@ -26,7 +26,48 @@ public class Actions : MonoBehaviour
     public void SetTarget(GridMovement npc)
     {
         npcMovement = npc;
+
+        // NEW: grab the Dialogue from the NPC you just targeted
+        var holder = npc ? npc.GetComponentInParent<DialogueHolder>() : null;
+        if (holder && holder.dialogue != null)
+        {
+            dialogue = holder.dialogue;
+        }
+        else
+        {
+            Debug.LogWarning("[Actions] Target has no DialogueHolder or Dialogue is null.");
+        }
     }
+
+    public void BindToTarget(GridMovement npc)
+    {
+        npcMovement = npc;
+
+        // Pull Dialogue from this NPC
+        var holder = npc ? npc.GetComponentInParent<DialogueHolder>() : null;
+        dialogue = holder ? holder.dialogue : null;
+
+        // Rebind buttons to the real handlers (keep your side-effects intact)
+        if (talkButton)
+        {
+            talkButton.onClick.RemoveAllListeners();
+            talkButton.onClick.AddListener(OnTalk);
+            talkButton.interactable = (dialogue != null);
+        }
+
+        if (hackButton)
+        {
+            hackButton.onClick.RemoveAllListeners();
+            hackButton.onClick.AddListener(OnHack);
+            hackButton.interactable = (npcMovement != null);
+        }
+
+        // Focus default
+        var es = EventSystem.current;
+        if (es && talkButton) es.SetSelectedGameObject(talkButton.gameObject);
+    }
+
+
 
     private void Update()
     {
@@ -35,14 +76,19 @@ public class Actions : MonoBehaviour
 
         if (GlobalGameState.isLevel3)
         {
-            if (!GlobalGameState.dialogueActive && _goToPressurePlate)
+            if (!GlobalGameState.isRobotHacked2 && !GlobalGameState.dialogueActive && _goToPressurePlate)
             {
                 transform.position = new Vector3(5.5f, 3.5f, 0f);
             }
         }
         
-        else if (!GlobalGameState.isRobotHacked && !GlobalGameState.dialogueActive && _goToPressurePlate )
-            transform.position = new Vector3(5.5f, 3.5f, 0f);
+        else if (GlobalGameState.isLevel2)
+        {
+            if (!GlobalGameState.isRobotHacked && !GlobalGameState.dialogueActive && _goToPressurePlate)
+            {
+                transform.position = new Vector3(5.5f, 3.5f, 0f);
+            }
+        }
     }
 
     private void OnTalk()

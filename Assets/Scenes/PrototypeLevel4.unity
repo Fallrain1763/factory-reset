@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b4cf9d5f3d24460b8fadeb45c6b45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridMovement
---- !u!114 &482494377
+--- !u!114 &482494378
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -686,9 +686,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 482494370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bee512c1c545144a18a403032b69687a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bb8f130ae44c4d3ca564c4ba8d0db5a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Actions2
+  m_EditorClassIdentifier: Assembly-CSharp::Actions
   talkButton: {fileID: 107455575}
   hackButton: {fileID: 1977775676}
   hiddenButton: {fileID: 0}
@@ -703,7 +703,51 @@ MonoBehaviour:
     hacked: 0
   dialogueManager: {fileID: 2101156049}
   npcMovement: {fileID: 482494372}
-  panel: {fileID: 2101156050}
+  panel: {fileID: 482494379}
+--- !u!114 &482494379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482494370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e3fb092b316f4298b7db90aec91ac92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PanelToggleUI
+  toggleKey: 32
+  panelRoot: {fileID: 988973218}
+  actions: {fileID: 482494378}
+  player: {fileID: 569174712}
+  playerMovement: {fileID: 569174710}
+  npcTag: Robot
+  gridSize: 1
+  gridOrigin: {x: 0, y: 0}
+  debug: 0
+  probeRadius: 0.22
+  owner: {fileID: 482494372}
+--- !u!114 &482494384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482494370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c66eea542455c4b8250ee85c7405a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueHolder
+  dialogue:
+    name: Blue Bot
+    sentences:
+    - i can let you in on a secret since you saved me
+    - step on the blue pressure plate second!
+    hackedSentences:
+    - you hacked me!
+    - go solve it yourself.
+    hacked: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,7 +1311,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &975275146 stripped
+--- !u!1 &988973218 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4881579763024307082, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
   m_PrefabInstance: {fileID: 1117325316}
@@ -1327,7 +1371,7 @@ PrefabInstance:
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: panel
       value: 
-      objectReference: {fileID: 2101156046}
+      objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: hiddenButton
       value: 
@@ -1407,7 +1451,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1644554036241370931, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 482494377}
+      addedObject: {fileID: 482494378}
+    - targetCorrespondingSourceObject: {fileID: 1644554036241370931, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 482494379}
+    - targetCorrespondingSourceObject: {fileID: 1644554036241370931, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 482494384}
   m_SourcePrefab: {fileID: 100100000, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
 --- !u!1 &1139233405
 GameObject:
@@ -1489,7 +1539,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5b269c541c7de8c4994c20122f8b0039, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.427
+  m_Volume: 0.035
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2557,6 +2607,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb8f130ae44c4d3ca564c4ba8d0db5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Actions
+--- !u!114 &1969039967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272668362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e3fb092b316f4298b7db90aec91ac92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PanelToggleUI
+  toggleKey: 32
+  panelRoot: {fileID: 102109659}
+  actions: {fileID: 1969039966}
+  player: {fileID: 569174712}
+  playerMovement: {fileID: 569174710}
+  npcTag: Robot
+  gridSize: 1
+  gridOrigin: {x: 0, y: 0}
+  debug: 0
+  probeRadius: 0.22
+  owner: {fileID: 1969039975}
+--- !u!114 &1969039973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272668362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c66eea542455c4b8250ee85c7405a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueHolder
+  dialogue:
+    name: Red Bot
+    sentences:
+    - you treated me fairly, i'll assist!
+    - step on the red pressure plate first!
+    hackedSentences:
+    - i'm not helping you!
+    - stay away from my system!
+    hacked: 0
+--- !u!114 &1969039975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4528793704803640710, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+  m_PrefabInstance: {fileID: 7380025951509375216}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272668362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b4cf9d5f3d24460b8fadeb45c6b45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridMovement
 --- !u!114 &1977775676 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6648678151265514067, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
@@ -2623,10 +2728,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2101156045}
   - component: {fileID: 2101156044}
-  - component: {fileID: 2101156046}
   - component: {fileID: 2101156048}
   - component: {fileID: 2101156049}
-  - component: {fileID: 2101156050}
   m_Layer: 0
   m_Name: Checkerboard_0
   m_TagString: Robot
@@ -2707,28 +2810,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2101156046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2101156043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e3fb092b316f4298b7db90aec91ac92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  toggleKey: 32
-  panelRoot: {fileID: 102109659}
-  actions: {fileID: 1969039966}
-  player: {fileID: 569174712}
-  playerMovement: {fileID: 569174710}
-  npcTag: Robot
-  gridSize: 1
-  gridOrigin: {x: 0, y: 0}
-  debug: 0
-  probeRadius: 0.22
 --- !u!61 &2101156048
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2736,7 +2817,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101156043}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -2790,28 +2871,6 @@ MonoBehaviour:
   nameText: {fileID: 664639174}
   dialogueText: {fileID: 1491277269}
   dialogueBox: {fileID: 714849236}
---- !u!114 &2101156050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2101156043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e290849fa23df476cb5ac6248ce7baa2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PanelToggleUI2
-  toggleKey: 13
-  panelRoot: {fileID: 975275146}
-  actions: {fileID: 482494377}
-  player: {fileID: 569174712}
-  playerMovement: {fileID: 569174710}
-  npcTag: Robot
-  gridSize: 1
-  gridOrigin: {x: 0, y: 0}
-  debug: 0
-  probeRadius: 0.22
 --- !u!1001 &4780774954257252148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2972,7 +3031,7 @@ PrefabInstance:
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: panel
       value: 
-      objectReference: {fileID: 2101156046}
+      objectReference: {fileID: 1969039967}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: hiddenButton
       value: 
@@ -3056,7 +3115,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1644554036241370931, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1969039967}
+    - targetCorrespondingSourceObject: {fileID: 1644554036241370931, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1969039973}
   m_SourcePrefab: {fileID: 100100000, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

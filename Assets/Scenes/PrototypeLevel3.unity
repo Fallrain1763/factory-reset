@@ -2997,7 +2997,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 0f1e2bd354f6eeb4395136d479a1402d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.385
+  m_Volume: 0.028
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4617,6 +4617,7 @@ GameObject:
   - component: {fileID: 1969039964}
   - component: {fileID: 1969039965}
   - component: {fileID: 1969039966}
+  - component: {fileID: 1969039967}
   m_Layer: 6
   m_Name: Robot
   m_TagString: Robot
@@ -4806,6 +4807,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   HasControl: 0
+--- !u!114 &1969039967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969039959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c66eea542455c4b8250ee85c7405a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueHolder
+  dialogue:
+    name: Blue Bot
+    sentences:
+    - Thanks for rescuing me!!!
+    - Please don't hack me
+    - I'll make sure to repay you this favor.
+    hackedSentences:
+    - Why did you hack me??
+    hacked: 0
 --- !u!1 &2101156043
 GameObject:
   m_ObjectHideFlags: 0
@@ -4921,6 +4943,7 @@ MonoBehaviour:
   gridOrigin: {x: 0, y: 0}
   debug: 0
   probeRadius: 0.22
+  owner: {fileID: 1969039966}
 --- !u!61 &2101156048
 BoxCollider2D:
   m_ObjectHideFlags: 0

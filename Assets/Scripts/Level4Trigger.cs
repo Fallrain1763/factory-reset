@@ -7,9 +7,9 @@ public class Level4Trigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GlobalGameState.stateSaver.Enqueue(GlobalGameState.lazerHitRobot2);
-            GlobalGameState.stateSaver.Enqueue(GlobalGameState.isRobotHacked2);
-            GlobalGameState.stateSaver.Enqueue(GlobalGameState.isRobotSaved);
+            GlobalGameState.stateSaver[2] = GlobalGameState.lazerHitRobot2;
+            GlobalGameState.stateSaver[3] = (GlobalGameState.isRobotHacked2);
+            GlobalGameState.stateSaver[4] = (GlobalGameState.isRobotSaved);
             GlobalGameState.isLevel3 = false;
             SceneManager.LoadScene("PrototypeLevel4");
         }

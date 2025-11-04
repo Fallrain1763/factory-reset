@@ -8,8 +8,8 @@ public class Level2StartCheck : MonoBehaviour
     private void Start()
     {
         GlobalGameState.isLevel2 = true;
-        GlobalGameState.lazerHitRobot = GlobalGameState.stateSaver.Dequeue();
-        GlobalGameState.isRobotHacked = GlobalGameState.stateSaver.Dequeue();
+        GlobalGameState.lazerHitRobot = GlobalGameState.stateSaver[0];
+        GlobalGameState.isRobotHacked = GlobalGameState.stateSaver[1];
         
         if (GlobalGameState.lazerHitRobot)
         {

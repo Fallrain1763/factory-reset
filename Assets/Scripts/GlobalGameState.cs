@@ -16,5 +16,5 @@ public static class GlobalGameState
     public static bool isLevel3 = false;
     public static bool isLevel4 = false;
     public static GameObject spaceUIRobot = null;
-    public static Queue<bool> stateSaver = new Queue<bool>();
+    public static bool[] stateSaver = new bool[5];
 }

@@ -10,11 +10,11 @@ public class Level4StartCheck : MonoBehaviour
     {
         GlobalGameState.isLevel3 = false;
         GlobalGameState.isLevel4 = true;
-        GlobalGameState.lazerHitRobot = GlobalGameState.stateSaver.Dequeue();
-        GlobalGameState.isRobotHacked = GlobalGameState.stateSaver.Dequeue();
-        GlobalGameState.lazerHitRobot2 = GlobalGameState.stateSaver.Dequeue();
-        GlobalGameState.isRobotHacked2 = GlobalGameState.stateSaver.Dequeue();
-        GlobalGameState.isRobotSaved = GlobalGameState.stateSaver.Dequeue();
+        GlobalGameState.lazerHitRobot = GlobalGameState.stateSaver[0];
+        GlobalGameState.isRobotHacked = GlobalGameState.stateSaver[1];
+        GlobalGameState.lazerHitRobot2 = GlobalGameState.stateSaver[2];
+        GlobalGameState.isRobotHacked2 = GlobalGameState.stateSaver[3];
+        GlobalGameState.isRobotSaved = GlobalGameState.stateSaver[4];
         
         if (GlobalGameState.lazerHitRobot)
         {

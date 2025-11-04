@@ -2,10 +2,13 @@ using System;
 using UnityEngine;
 public class LazerCollision : MonoBehaviour
 {
+    [SerializeField] private AudioSource audioSource;
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Robot"))
         {
+            audioSource.Play();
             if (GlobalGameState.isLevel1 || GlobalGameState.isLevel2)
             {
                 GlobalGameState.lazerHitRobot = true;

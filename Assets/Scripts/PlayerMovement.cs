@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GridMovement : MonoBehaviour
 {
@@ -39,6 +40,11 @@ public class GridMovement : MonoBehaviour
         {
             direction = Vector2.right;
             TryMove(direction);
+        }
+        else if (Input.GetKeyDown(KeyCode.R) )
+        {
+            if(!GlobalGameState.dialogueActive)
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

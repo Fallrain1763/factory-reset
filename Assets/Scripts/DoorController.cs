@@ -19,6 +19,8 @@ public class DoorLatchController : MonoBehaviour
     public bool permanentOnceOpened = true;
 
     [SerializeField] private bool isOpen;
+    
+    [SerializeField] private AudioSource audioSource;
 
     private void OnEnable()
     {
@@ -76,12 +78,14 @@ public class DoorLatchController : MonoBehaviour
             if (isOpen) return;
             if (RequirementMet())
             {
+                audioSource.Play();
                 isOpen = true;
                 doorToDisable.SetActive(false); // permanently open
             }
         }
         else
         {
+            audioSource.Play();
             bool openNow = RequirementMet();
             isOpen = openNow;
             doorToDisable.SetActive(!openNow); // toggle with plate states

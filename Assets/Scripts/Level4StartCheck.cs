@@ -10,6 +10,11 @@ public class Level4StartCheck : MonoBehaviour
     {
         GlobalGameState.isLevel3 = false;
         GlobalGameState.isLevel4 = true;
+        GlobalGameState.lazerHitRobot = GlobalGameState.stateSaver.Dequeue();
+        GlobalGameState.isRobotHacked = GlobalGameState.stateSaver.Dequeue();
+        GlobalGameState.lazerHitRobot2 = GlobalGameState.stateSaver.Dequeue();
+        GlobalGameState.isRobotHacked2 = GlobalGameState.stateSaver.Dequeue();
+        GlobalGameState.isRobotSaved = GlobalGameState.stateSaver.Dequeue();
         
         if (GlobalGameState.lazerHitRobot)
         {
@@ -21,6 +26,14 @@ public class Level4StartCheck : MonoBehaviour
 
         if (GlobalGameState.isRobotHacked)
         {
+            if (GlobalGameState.isLowBranching)
+            {
+                if (robot)
+                {
+                    Destroy(robot);
+                }
+            }
+            
             if (robot)
             {
                 Actions actions = robot.GetComponentInChildren<Actions>();
@@ -47,6 +60,14 @@ public class Level4StartCheck : MonoBehaviour
 
         if (GlobalGameState.isRobotHacked2)
         {
+            if (GlobalGameState.isLowBranching)
+            {
+                if (robot2)
+                {
+                    Destroy(robot2);
+                }
+            }
+            
             if (robot2)
             {
                 Actions actions = robot2.GetComponentInChildren<Actions>();

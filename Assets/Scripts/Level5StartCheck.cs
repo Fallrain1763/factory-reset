@@ -7,6 +7,18 @@ public class Level5StartCheck : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (GlobalGameState.isLowBranching)
+        {
+            if (GlobalGameState.isRobotHacked)
+            {
+                GlobalGameState.lazerHitRobot = true;
+            }
+            if (GlobalGameState.isRobotHacked2)
+            {
+                GlobalGameState.lazerHitRobot2 = true;
+            }
+        }
+
         if (!GlobalGameState.lazerHitRobot &&
             !GlobalGameState.lazerHitRobot2 &&
             GlobalGameState.isRobotSaved)

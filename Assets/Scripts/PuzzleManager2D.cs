@@ -16,6 +16,8 @@ public class PuzzleManager2D : MonoBehaviour
     public PressurePlateLevel4[] plates; // All pressure plates in the scene
 
     private bool puzzleSolved = false;
+    
+    [SerializeField] private AudioSource audioSource;
 
     private void Awake()
     {
@@ -64,6 +66,8 @@ public class PuzzleManager2D : MonoBehaviour
         Debug.Log("✅ Puzzle Solved!");
         puzzleSolved = true;
 
+        audioSource.Play();
+        
         // Open the door (disable or trigger animation)
         if (door != null)
             door.SetActive(false);

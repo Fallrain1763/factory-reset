@@ -97,9 +97,22 @@ public class Actions : MonoBehaviour
     private void OnHack()
     {
         dialogue.hacked = true;
-        if (GlobalGameState.isLevel1 || GlobalGameState.isLevel2) 
-            GlobalGameState.isRobotHacked = true;
+        if (GlobalGameState.isLevel1 || GlobalGameState.isLevel2) {GlobalGameState.isRobotHacked = true;}
         if (GlobalGameState.isLevel3) { GlobalGameState.isRobotHacked2 = true; }
+
+        if (GlobalGameState.isLevel4)
+        {
+            Debug.Log(hackButton.transform.root.gameObject.name);
+            if (hackButton.transform.root.gameObject.name == "Robot")
+            {
+                GlobalGameState.isRobotHacked = true;
+            }
+            else
+            {
+                GlobalGameState.isRobotHacked2 = true;
+            }
+        }
+
         if (!HackManager.Instance) { Debug.LogWarning("[Actions] HackManager missing."); return; }
         if (!npcMovement) { Debug.LogWarning("[Actions] No npcMovement set for hack."); return; }
 

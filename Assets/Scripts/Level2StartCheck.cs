@@ -8,6 +8,8 @@ public class Level2StartCheck : MonoBehaviour
     private void Start()
     {
         GlobalGameState.isLevel2 = true;
+        GlobalGameState.lazerHitRobot = GlobalGameState.stateSaver.Dequeue();
+        GlobalGameState.isRobotHacked = GlobalGameState.stateSaver.Dequeue();
         
         if (GlobalGameState.lazerHitRobot)
         {
@@ -19,6 +21,14 @@ public class Level2StartCheck : MonoBehaviour
 
         if (GlobalGameState.isRobotHacked)
         {
+            if (GlobalGameState.isLowBranching)
+            {
+                if (robot)
+                {
+                    Destroy(robot);
+                }
+            }
+            
             if (robot)
             {
                 DialogueHolder dialHol = robot.GetComponentInChildren<DialogueHolder>();

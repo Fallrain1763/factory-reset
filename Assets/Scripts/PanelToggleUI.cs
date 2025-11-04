@@ -29,7 +29,7 @@ public class PanelToggleUI : MonoBehaviour
     [SerializeField] private GridMovement owner;
 
     private bool _isOpen;
-
+    //private GameObject spaceUI;
     void Update()
     {
         if (HackManager.IsHacking || HackManager.SuppressUI)
@@ -38,13 +38,25 @@ public class PanelToggleUI : MonoBehaviour
             return;
         }
         //Shuchen fix here:
+        
         var best = FindAdjacentTaggedNPC();
+
         if (best)
         {
-            Debug.Log("Space");
+            GameObject robot = best.gameObject;
+            GlobalGameState.spaceUIRobot = robot;
+            robot.transform.GetChild (1).gameObject.SetActive(true);
+        }
+        else
+        {
+            if (GlobalGameState.spaceUIRobot)
+            {
+                GlobalGameState.spaceUIRobot.transform.GetChild (1).gameObject.SetActive(false);
+                GlobalGameState.spaceUIRobot = null;
+            }
         }
         
-
+        
 
         if (Input.GetKeyDown(toggleKey) && !GlobalGameState.dialogueActive)
         {
